@@ -1,0 +1,41 @@
+### Отобрать список задач
+GET {{url}}/engine-rest/external-task?processInstanceId={{processInstanceId}}&topicName=numerate-participants
+Content-Type: application/json
+
+> {%
+client.global.set("taskId", response.body[0].id)
+ %}
+
+### Взять задачу в работу (fetch & lock)
+
+POST {{url}}/engine-rest/external-task/fetchAndLock
+Content-Type: application/json
+
+{
+  "workerId": "{{workerId}}",
+  "maxTasks": 1,
+  "topics": [
+    {
+      "topicName": "numerate-participants",
+      "lockDuration": 10000
+    }
+  ]
+}
+
+### Завершить задачу
+POST {{url}}/engine-rest/external-task/{{taskId}}/complete
+Content-Type: application/json
+
+{
+  "workerId": "{{workerId}}",
+  "variables": {
+    "participants": {
+      "value": [{
+        "name": "Mstislav",
+        "createdDate": "2024-01-01T20:00:00.00000Z",
+        "chatId": 203345027,
+        "number": 1
+      }]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+### Отобрать список задач
+GET {{url}}/engine-rest/external-task?processInstanceId={{processInstanceId}}&topicName=stop-registration
+Content-Type: application/json
+
+> {%
+client.global.set("taskId", response.body[0].id)
+ %}
+
+### Взять задачу в работу (fetch & lock)
+
+POST {{url}}/engine-rest/external-task/fetchAndLock
+Content-Type: application/json
+
+{
+  "workerId": "{{workerId}}",
+  "maxTasks": 1,
+  "topics": [
+    {
+      "topicName": "stop-registration",
+      "lockDuration": 10000
+    }
+  ]
+}
+
+### Завершить задачу
+POST {{url}}/engine-rest/external-task/{{taskId}}/complete
+Content-Type: application/json
+
+{
+  "workerId": "{{workerId}}"
+}

@@ -1,0 +1,9 @@
+# Старт процесса
+POST {{url}}/engine-rest/process-definition/key/{{key}}/start
+Content-Type: application/json
+
+{}
+
+> {%
+client.global.set("processInstanceId", response.body.id)
+ %}

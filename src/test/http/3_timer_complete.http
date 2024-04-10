@@ -1,0 +1,19 @@
+### Отобрать таймеры
+
+POST {{url}}/engine-rest/job
+Content-Type: application/json
+
+{
+  "processInstanceId": "{{processInstanceId}}",
+  "timers": true
+}
+> {%
+client.global.set("jobId", response.body[0].id)
+ %}
+
+### Выполнить job (timer)
+
+POST {{url}}/engine-rest/job/{{jobId}}/execute
+Content-Type: application/json
+
+{}
