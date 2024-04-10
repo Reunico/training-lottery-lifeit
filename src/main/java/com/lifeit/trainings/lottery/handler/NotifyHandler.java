@@ -1,8 +1,7 @@
 package com.lifeit.trainings.lottery.handler;
 
 import com.lifeit.trainings.lottery.constant.ProcessVariableConstant;
-import com.lifeit.trainings.lottery.model.Participant;
-import com.lifeit.trainings.lottery.service.ParticipantService;
+import com.lifeit.trainings.lottery.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.client.spring.annotation.ExternalTaskSubscription;
@@ -11,22 +10,20 @@ import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
-
 @Component
-@ExternalTaskSubscription("get-participants")
+@ExternalTaskSubscription("notify")
 @RequiredArgsConstructor
 @Slf4j
-public class GetParticipantsHandler implements ExternalTaskHandler {
+public class NotifyHandler implements ExternalTaskHandler {
 
-    private final ParticipantService participantService;
+    private final NotificationService notificationService;
 
     @Override
     public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
-
-        List<Participant> participants = participantService.getParticipants();
-        externalTaskService.complete(externalTask, Map.of(ProcessVariableConstant.PARTICIPANTS, participants));
-        log.debug("Получен список участников");
+        Long chatId = ((Integer) externalTask.getVariable(ProcessVariableConstant.CHAT_ID)).longValue();
+        String text = externalTask.getVariable(ProcessVariableConstant.TEXT);
+        notificationService.notify(chatId, text);
+        externalTaskService.complete(externalTask);
+        log.warn("Уведомления");
     }
 }

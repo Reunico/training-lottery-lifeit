@@ -26,6 +26,6 @@ public class ParticipantServiceImpl implements ParticipantService {
 
     @Override
     public List<Participant> numerateParticipants(List<Participant> participants) {
-        return (List<Participant>) restTemplate.postForObject(applicationProperties.getParticipantUrl(), participants, List.class);
+        return (List<Participant>) restTemplate.postForObject(applicationProperties.getNumberingUrl(), participants, List.class);
     }
 }

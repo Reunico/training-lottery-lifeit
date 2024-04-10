@@ -26,12 +26,17 @@
 			<artifactId>camunda-bpm-spring-boot-starter-external-task-client</artifactId>
 			<version>7.20.0</version>
 		</dependency>
-<!--		Необходимая рутина-->
+		<!-- Необходимая рутина-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-
+		</dependency>
+		<!-- Исправление ошибки: Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

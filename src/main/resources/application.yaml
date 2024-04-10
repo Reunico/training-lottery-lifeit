@@ -7,7 +7,9 @@ application:
   participant-url: https://demo.reunico.com/meetup/api/registered-participants
   numbering-url: https://demo.reunico.com/meetup/api/numbering
   notify-url: https://demo.reunico.com/meetup/api/notify-participant
+# https://docs.camunda.org/manual/7.20/user-guide/ext-client/spring-boot-starter/
 camunda:
   bpm:
     client:
       base-url: http://localhost:8080/engine-rest
+      disable-backoff-strategy: true
