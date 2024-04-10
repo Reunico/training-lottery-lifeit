@@ -1,0 +1,125 @@
+### Валидация плана миграции
+POST {{url}}/engine-rest/migration/validate
+Content-Type: application/json
+
+{
+  "sourceProcessDefinitionId": "lottery:6:0a79c08e-f736-11ee-a5be-020a41be55d0",
+  "targetProcessDefinitionId": "lottery:7:33913780-f73b-11ee-a5be-020a41be55d0",
+  "instructions": [
+    {
+      "sourceActivityIds": [
+        "Activity_1lxy89p"
+      ],
+      "targetActivityIds": [
+        "Activity_1lxy89p"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_0e87dwp"
+      ],
+      "targetActivityIds": [
+        "Activity_0e87dwp"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_17ifxcc"
+      ],
+      "targetActivityIds": [
+        "Activity_17ifxcc"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Event_17xji9h"
+      ],
+      "targetActivityIds": [
+        "Event_17xji9h"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_19m8pci"
+      ],
+      "targetActivityIds": [
+        "Activity_19m8pci"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_1jscgw8"
+      ],
+      "targetActivityIds": [
+        "Activity_1jscgw8"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_14qkq5q"
+      ],
+      "targetActivityIds": [
+        "Activity_14qkq5q"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_1iembf3"
+      ],
+      "targetActivityIds": [
+        "Activity_1iembf3"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_1jxe54n#multiInstanceBody"
+      ],
+      "targetActivityIds": [
+        "Activity_1jxe54n#multiInstanceBody"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_0qy133r"
+      ],
+      "targetActivityIds": [
+        "Activity_0qy133r"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_1jxe54n"
+      ],
+      "targetActivityIds": [
+        "Activity_1jxe54n"
+      ],
+      "updateEventTrigger": false
+    },
+    {
+      "sourceActivityIds": [
+        "Activity_1hzn86e"
+      ],
+      "targetActivityIds": [
+        "Activity_1hzn86e"
+      ],
+      "updateEventTrigger": false
+    }
+  ],
+  "variables": {
+    "acme": {
+      "type": "String",
+      "value": "Test",
+      "valueInfo": {}
+    }
+  }
+}
