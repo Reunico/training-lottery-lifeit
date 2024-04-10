@@ -3,7 +3,7 @@ server:
 application:
   login:
   password:
-  lottery-url: https://demo.reunico.com/meetup/api/lottery
+  lottery-url: https://demo.reunico.com/meetup/api/lottery/1
   participant-url: https://demo.reunico.com/meetup/api/registered-participants
   numbering-url: https://demo.reunico.com/meetup/api/numbering
   notify-url: https://demo.reunico.com/meetup/api/notify-participant

@@ -1,5 +1,6 @@
 package com.lifeit.trainings.lottery.handler;
 
+import com.lifeit.trainings.lottery.constant.ErrorConstant;
 import com.lifeit.trainings.lottery.service.LotteryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,14 @@ public class StartRegistrationHandler implements ExternalTaskHandler {
 
     @Override
     public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+        try {
+            lotteryService.startRegistration();
+            externalTaskService.complete(externalTask);
+            log.warn("Регистрация открыта");
+        } catch (Exception e) {
+            log.error("Ошибка соединения");
+            externalTaskService.handleBpmnError(externalTask, ErrorConstant.CONNECT_ERROR);
+        }
 
-        lotteryService.startRegistration();
-        externalTaskService.complete(externalTask);
-        log.warn("Регистрация открыта");
     }
 }
